@@ -9,11 +9,50 @@
 <body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
   <div class="max-w-2xl text-center">
     <h1 class="text-4xl font-bold mb-4">Ciao! Sono <span class="text-indigo-400">claudcelle</span></h1>
+    <div class="text-lg mb-4 h-6">
+      <span id="typewriter" class="text-green-400 font-mono"></span>
+    </div>
     <p class="text-lg mb-6">Benvenuto nel mio portfolio. Qui trovi i miei progetti su GitHub, roba seria.</p>
     <ul class="space-y-2">
       <li><a href="https://github.com/claudcelle/progetto1" class="text-indigo-300 hover:underline">🔗 Progetto 1</a></li>
       <li><a href="https://github.com/claudcelle/progetto2" class="text-indigo-300 hover:underline">🔗 Progetto 2</a></li>
     </ul>
   </div>
+
+  <script>
+    const phrases = [
+      "> coding like a beast...",
+      "> pushing commits...",
+      "> deploying like a boss 🚀",
+    ];
+    let i = 0, j = 0, current = "", isDeleting = false;
+    const el = document.getElementById("typewriter");
+
+    function type() {
+      if (i < phrases.length) {
+        if (!isDeleting && j <= phrases[i].length) {
+          current = phrases[i].substring(0, j++);
+        } else if (isDeleting && j >= 0) {
+          current = phrases[i].substring(0, j--);
+        }
+
+        el.innerHTML = current;
+
+        if (j === phrases[i].length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        } else if (j === 0 && isDeleting) {
+          isDeleting = false;
+          i = (i + 1) % phrases.length;
+          setTimeout(type, 300);
+        } else {
+          setTimeout(type, isDeleting ? 50 : 100);
+        }
+      }
+    }
+
+    type();
+  </script>
 </body>
+
 </html>
