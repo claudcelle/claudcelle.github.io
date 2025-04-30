@@ -6,6 +6,43 @@
   <title>Il mio Portfolio GitHub</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+<div id="particles-js" class="fixed inset-0 -z-10"></div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 80 },
+      color: { value: "#00ffcc" },
+      shape: { type: "circle" },
+      opacity: { value: 0.2 },
+      size: { value: 3 },
+      line_linked: {
+        enable: true,
+        distance: 150,
+        color: "#00ffcc",
+        opacity: 0.2,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 1.5
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "repulse" },
+        onclick: { enable: true, mode: "push" }
+      },
+      modes: {
+        repulse: { distance: 100 },
+        push: { particles_nb: 4 }
+      }
+    }
+  });
+</script>
+
 <body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
   <div class="max-w-2xl text-center">
     <h1 class="text-4xl font-bold mb-4">Ciao! Sono <span class="text-indigo-400">claudcelle</span></h1>
