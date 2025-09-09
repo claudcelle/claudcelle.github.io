@@ -195,12 +195,27 @@
       .grid{ 
         display: grid; 
         gap: 1rem; 
+        grid-template-columns: 1fr;
       }
       
       @media (min-width: 768px){ 
         .grid{ 
           grid-template-columns: 2fr 1fr; 
-        } 
+          grid-template-areas: 
+            "about now"
+            "projects projects";
+        }
+        
+        .projects { 
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        }
+      }
+      
+      .about-section { grid-area: about; }
+      .now-section { grid-area: now; }
+      .projects-section { 
+        grid-area: projects;
+        grid-column: 1 / -1;
       }
       
       section{ 
@@ -259,6 +274,7 @@
       .projects{ 
         display: grid; 
         gap: .75rem; 
+        margin-top: 1rem;
       }
       
       .card{
@@ -470,60 +486,47 @@
       </header>
 
       <main id="main" class="grid">
-      <!-- LEFT -->
-        <section aria-labelledby="about">
+        <!-- LEFT -->
+        <section class="about-section" aria-labelledby="about">
           <h2 id="about">About me</h2>
           <p class="lead">Trained in complex systems, with focus on financial networks, agent-based modeling, and generative approaches. Passionate about research, exploring how data-driven models capture dynamics of social and economic systems.</p>
           <div class="links">
             <a class="chip" href="https://github.com/claudcelle" aria-label="GitHub">🐙 GitHub</a>
             <a class="chip" href="https://www.linkedin.com/in/claudio-cellerini-86428716b/" aria-label="LinkedIn">💼 LinkedIn</a>
-
+            <a class="chip" href="mailto:claudio.cellerini.2@gmail.com" aria-label="Email">✉️ Email</a>
             <a class="chip" href="/cellerini_cv_english_studiorum.pdf" aria-label="CV">📄 CV</a>
-            <!-- <a class="chip" href="https://x.com/your-handle" aria-label="Twitter / X">𝕏</a> -->
           </div>
         </section>
 
         <!-- RIGHT -->
-        <section aria-labelledby="now">
+        <section class="now-section" aria-labelledby="now">
           <h2 id="now">Now</h2>
           <ul class="muted">
             <li>Open to work!</li>
             <li>Collaborating on a research paper on activity-driven modeling of financial transaction networks</li>
             <li>Open to research collaborations</li>
           </ul>
-          <!-- <section>piripippo</section> -->
         </section>
 
         <!-- PROJECTS -->
-        <section class="projects" aria-labelledby="projects">
+        <section class="projects-section" aria-labelledby="projects">
           <h2 id="projects">Highlighted Projects</h2>
+          <div class="projects">
+            <article class="card">
+              <h3><a href="https://github.com/carolinamattsson/transactions">ADTXNS</a></h3>
+              <p class="muted">A Python package for artificial transaction record generation. Collaborated on development as part of my MSc thesis: "activity-driven modeling of financial transaction networks". Currently working on it as a maintainer.</p>
+            </article>
 
-          <article class="card">
-            <h3><a href="https://github.com/claudcelle/abm-finance">Reddit User Gender Classification</a></h3>
-            <p class="muted">Developed a machine learning model to predict Reddit users’ gender from their posts. Built text-based features and trained a custom classification pipeline. Applied statistical modeling and modern ML techniques for performance optimization. Created as part of a course competition in Data Mining: Statistical Modeling & Learning From Data.</p>
-            <!-- <pre><code>pip install -e .  # quickstart -->
-<!-- python -m abm.sim --steps 1_000_000</code></pre> -->
-          </article>
+            <article class="card">
+              <h3><a href="https://github.com/claudcelle/reddit_2024">Reddit User Gender Classification</a></h3>
+              <p class="muted">Developed a machine learning model to predict Reddit users' gender from their posts. Built text-based features and trained a custom classification pipeline. Created as part of a course competition in Data Mining: Statistical Modeling & Learning From Data.</p>
+            </article>
 
-          <article class="card">
-            <h3><a href="https://github.com/claudcelle/diffusion-xai">Diffusion-XAI</a></h3>
-            <p class="muted">Diffusion models with interpretable knobs and fast sampling.</p>
-          </article>
-
-          <article class="card">
-            <h3><a href="https://claudcelle.github.io/blog">Blog</a></h3>
-            <p class="muted">Short notes on modeling, reproducibility, and speed.</p>
-          </article>
-        </section>
-
-        <!-- CONTACT -->
-        <section aria-labelledby="contact">
-          <h2 id="contact">Contact</h2>
-          <p>
-            Reach me at <a class="chip" href="mailto:claudio.cellerini.2@gmail.com" aria-label="Email">✉️ Email</a>
-            <!-- <a href="mailto:you@example.com">you@example.com</a> -->
-            . I read everything.
-          </p>
+            <!-- <article class="card">
+              <h3><a href="https://github.com/claudcelle/sarafu">Sarafu Dataset Analysis</a></h3>
+              <p class="muted">Data analysis of the "Sarafu Dataset", exploring community currency transaction patterns and network dynamics in informal economic systems.</p>
+            </article> -->
+          </div>
         </section>
       </main>
 
