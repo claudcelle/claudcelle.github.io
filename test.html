@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Claudio Cellerini</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Physics" />
+    <link rel="canonical" href="https://claudcelle.github.io/" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Claudio Cellerini" />
+    <meta property="og:description" content="Projects, writing, and how to reach me." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://claudcelle.github.io/" />
+    <meta property="og:image" content="https://claudcelle.github.io/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="/favicon.ico" />
+
+    <!-- Styles -->
+    <style>
+      :root{
+        --bg: #0b0c10; 
+        --fg: #e5e7eb; 
+        --muted: #9aa1a9; 
+        --card: #111318; 
+        --accent: #6ee7b7; 
+        --ring: #2dd4bf;
+        --link: #93c5fd; 
+        --code: #f4f4f5; 
+        --shadow: 0 10px 25px rgba(0,0,0,.25);
+        --gradient-1: #0b0c10;
+        --gradient-2: #1f2937;
+        --gradient-3: #0f172a;
+        --gradient-4: #111827;
+        --particle-color: #00ffcc;
+        --particle-opacity: 0.25;
+        --blob-color: rgba(110,231,183,.45);
+      }
+      
+      @media (prefers-color-scheme: light){
+        :root{ 
+          --bg: #ffffff; 
+          --fg: #0f172a; 
+          --muted: #475569; 
+          --card: #f8fafc; 
+          --accent: #0ea5e9; 
+          --ring: #22d3ee; 
+          --link: #2563eb; 
+          --code: #0f172a;
+          --shadow: 0 10px 25px rgba(0,0,0,.1);
+          --gradient-1: #f0f9ff;
+          --gradient-2: #e0f2fe;
+          --gradient-3: #f8fafc;
+          --gradient-4: #f1f5f9;
+          --particle-color: #0ea5e9;
+          --particle-opacity: 0.15;
+          --blob-color: rgba(14,165,233,.25);
+        }
+      }
+      
+      [data-theme="light"]{ 
+        --bg: #ffffff; 
+        --fg: #0f172a; 
+        --muted: #475569; 
+        --card: #f8fafc; 
+        --accent: #0ea5e9; 
+        --ring: #22d3ee; 
+        --link: #2563eb; 
+        --code: #0f172a;
+        --shadow: 0 10px 25px rgba(0,0,0,.1);
+        --gradient-1: #f0f9ff;
+        --gradient-2: #e0f2fe;
+        --gradient-3: #f8fafc;
+        --gradient-4: #f1f5f9;
+        --particle-color: #0ea5e9;
+        --particle-opacity: 0.15;
+        --blob-color: rgba(14,165,233,.25);
+      }
+
+      *{ box-sizing: border-box; }
+      
+      html, body{ height: 100%; }
+      
+      body{
+        margin: 0; 
+        font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji","Segoe UI Emoji";
+        color: var(--fg); 
+        -webkit-font-smoothing: antialiased; 
+        -moz-osx-font-smoothing: grayscale;
+        background: linear-gradient(-45deg, var(--gradient-1), var(--gradient-2), var(--gradient-3), var(--gradient-4));
+        background-size: 400% 400%;
+        animation: gradientShift 20s ease infinite;
+        transition: background 0.3s ease;
+      }
+      
+      @keyframes gradientShift { 
+        0%{ background-position: 0% 50%; } 
+        50%{ background-position: 100% 50%; } 
+        100%{ background-position: 0% 50%; } 
+      }
+
+      .container{ 
+        max-width: 960px; 
+        margin: 0 auto; 
+        padding: 2rem 1.25rem 4rem; 
+        position: relative; 
+        z-index: 1; 
+      }
+      
+      header{ 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        gap: 1rem; 
+        margin-block: 1rem 2rem; 
+      }
+      
+      .brand{ 
+        display: flex; 
+        align-items: center; 
+        gap: 1rem; 
+      }
+      
+      .avatar{
+        width: 64px; 
+        height: 64px; 
+        border-radius: 50%; 
+        border: 2px solid var(--ring); 
+        box-shadow: var(--shadow); 
+        object-fit: cover;
+        background: linear-gradient(135deg, var(--card), transparent);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+      
+      .avatar:hover{
+        transform: scale(1.05);
+        border-color: var(--accent);
+      }
+      
+      h1{ 
+        font-size: 1.875rem; 
+        line-height: 1.2; 
+        margin: 0; 
+        background: linear-gradient(135deg, var(--fg), var(--accent));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      
+      .subtitle{ 
+        color: var(--muted); 
+        margin: 0; 
+        font-weight: 500;
+      }
+      
+      .btn{
+        appearance: none; 
+        border: 1px solid rgba(255,255,255,.1); 
+        padding: .6rem .9rem; 
+        border-radius: .75rem; 
+        cursor: pointer; 
+        font-weight: 600;
+        background: var(--card); 
+        color: var(--fg); 
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .btn::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.5s ease;
+      }
+      
+      .btn:hover{
+        transform: translateY(-2px);
+        border-color: var(--ring);
+      }
+      
+      .btn:hover::before{
+        left: 100%;
+      }
+      
+      .grid{ 
+        display: grid; 
+        gap: 1rem; 
+      }
+      
+      @media (min-width: 768px){ 
+        .grid{ 
+          grid-template-columns: 2fr 1fr; 
+        } 
+      }
+      
+      section{ 
+        background: var(--card); 
+        padding: 1.2rem; 
+        border-radius: 1rem; 
+        border: 1px solid rgba(255,255,255,.06);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+      
+      section:hover{
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+      
+      section h2{ 
+        margin: .25rem 0 1rem; 
+        font-size: 1.1rem; 
+        letter-spacing: .02em;
+        color: var(--accent);
+      }
+      
+      .lead{ 
+        font-size: 1.05rem; 
+        line-height: 1.7;
+      }
+      
+      .links{ 
+        display: flex; 
+        flex-wrap: wrap; 
+        gap: .5rem; 
+        margin-top: .75rem; 
+      }
+      
+      .chip{
+        display: inline-flex; 
+        align-items: center; 
+        gap: .5rem; 
+        padding: .5rem .75rem; 
+        border-radius: 999px; 
+        border: 1px solid rgba(255,255,255,.08);
+        text-decoration: none; 
+        color: var(--fg); 
+        background: transparent;
+        transition: all 0.3s ease;
+      }
+      
+      .chip:hover{ 
+        border-color: var(--link);
+        background: var(--link);
+        color: white;
+        transform: translateY(-1px);
+      }
+      
+      .projects{ 
+        display: grid; 
+        gap: .75rem; 
+      }
+      
+      .card{
+        padding: 1rem; 
+        border-radius: .9rem; 
+        border: 1px solid rgba(255,255,255,.08); 
+        background: linear-gradient(180deg, rgba(255,255,255,.02), transparent);
+        transition: all 0.3s ease;
+      }
+      
+      .card:hover{
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0,0,0,.2);
+      }
+      
+      .card h3{ 
+        margin: .1rem 0 .35rem; 
+        font-size: 1rem; 
+      }
+      
+      .card h3 a{
+        color: var(--accent);
+        transition: color 0.3s ease;
+      }
+      
+      .card:hover h3 a{
+        color: var(--ring);
+      }
+      
+      .muted{ 
+        color: var(--muted); 
+      }
+      
+      code, kbd, pre{ 
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; 
+      }
+      
+      pre{ 
+        background: rgba(11,12,16,0.8); 
+        color: var(--code); 
+        padding: .8rem; 
+        border-radius: .6rem; 
+        overflow: auto; 
+        border: 1px solid rgba(255,255,255,.08);
+        margin: 0.5rem 0;
+      }
+      
+      [data-theme="light"] pre{
+        background: rgba(241,245,249,0.8);
+        color: var(--code);
+      }
+      
+      footer{ 
+        margin-top: 2rem; 
+        color: var(--muted); 
+        font-size: .95rem; 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        gap: 1rem; 
+      }
+      
+      a{ 
+        color: var(--link); 
+        text-decoration: none; 
+        transition: color 0.3s ease;
+      }
+      
+      a:hover{ 
+        text-decoration: underline; 
+        color: var(--accent);
+      }
+      
+      .sr-only{ 
+        position: absolute; 
+        width: 1px; 
+        height: 1px; 
+        padding: 0; 
+        margin: -1px; 
+        overflow: hidden; 
+        clip: rect(0,0,0,0); 
+        white-space: nowrap; 
+        border: 0; 
+      }
+
+      /* Background objects */
+      .background-objects{
+        position: fixed; 
+        inset: 0; 
+        pointer-events: none; 
+        z-index: 0; 
+        overflow: hidden;
+      }
+      
+      .background-objects span{
+        position: absolute; 
+        display: block; 
+        width: 120px; 
+        height: 120px; 
+        border-radius: 50%; 
+        opacity: .7;
+        background: radial-gradient(circle, var(--blob-color) 0%, transparent 70%);
+        filter: blur(1px); 
+        animation: drift 28s linear infinite;
+      }
+      
+      .background-objects span:nth-child(1){ 
+        top: 10%; 
+        left: 12%; 
+        transform: scale(1.1); 
+        animation-duration: 32s; 
+        animation-delay: -2s; 
+      }
+      
+      .background-objects span:nth-child(2){ 
+        top: 35%; 
+        left: 70%; 
+        transform: scale(.9); 
+        animation-duration: 40s; 
+        animation-delay: -8s; 
+      }
+      
+      .background-objects span:nth-child(3){ 
+        top: 65%; 
+        left: 22%; 
+        transform: scale(1.3); 
+        animation-duration: 36s; 
+        animation-delay: -14s; 
+      }
+      
+      .background-objects span:nth-child(4){ 
+        top: 78%; 
+        left: 82%; 
+        transform: scale(.8); 
+        animation-duration: 30s; 
+        animation-delay: -20s; 
+      }
+      
+      .background-objects span:nth-child(5){ 
+        top: 18%; 
+        left: 85%; 
+        transform: scale(1.6); 
+        animation-duration: 50s; 
+        animation-delay: -26s; 
+      }
+
+      @keyframes drift{
+        0%   { transform: translate3d(0,0,0) scale(1); opacity: .6; }
+        25%  { transform: translate3d(60px,-40px,0) scale(1.15); opacity: .4; }
+        50%  { transform: translate3d(-30px,-80px,0) scale(1.05); opacity: .5; }
+        75%  { transform: translate3d(40px,20px,0) scale(1.2); opacity: .35; }
+        100% { transform: translate3d(0,0,0) scale(1); opacity: .6; }
+      }
+      
+      #particles-js {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      
+      .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Responsive improvements */
+      @media (max-width: 767px) {
+        header {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .brand {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        footer {
+          flex-direction: column;
+          text-align: center;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js" aria-hidden="true"></div>
+
+    <a class="sr-only" href="#main">Skip to content</a>
+
+    <!-- Background animated layer -->
+    <div class="background-objects" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="container">
+      <header>
+        <div class="brand">
+          <img class="avatar" src="https://avatars.githubusercontent.com/u/00000000?v=4" alt="Claudio Cellerini avatar" />
+          <div>
+            <h1>Claudio Cellerini</h1>
+            <p class="subtitle">Physicist of Complex Systems</p>
+          </div>
+        </div>
+        <button id="theme" class="btn" aria-label="Toggle theme">🌓 Theme</button>
+      </header>
+
+      <main id="main" class="grid">
+      <!-- LEFT -->
+        <section aria-labelledby="about">
+          <h2 id="about">About me</h2>
+          <p class="lead">Trained in complex systems, with focus on financial networks, agent-based modeling, and generative approaches. Passionate about research, exploring how data-driven models capture dynamics of social and economic systems.</p>
+          <div class="links">
+            <a class="chip" href="https://github.com/claudcelle" aria-label="GitHub">🐙 GitHub</a>
+            <a class="chip" href="https://www.linkedin.com/in/claudio-cellerini-86428716b/" aria-label="LinkedIn">💼 LinkedIn</a>
+
+            <a class="chip" href="/home/claudio/github_site/claudcelle.github.io/cellerini_cv_english_studiorum.pdf" aria-label="CV">📄 CV</a>
+            <!-- <a class="chip" href="https://x.com/your-handle" aria-label="Twitter / X">𝕏</a> -->
+          </div>
+        </section>
+
+        <!-- RIGHT -->
+        <section aria-labelledby="now">
+          <h2 id="now">Now</h2>
+          <ul class="muted">
+            <li>Open to work!</li>
+            <li>Collaborating on a research paper on activity-driven modeling of financial transaction networks</li>
+            <li>Open to research collaborations</li>
+          </ul>
+          <!-- <section>piripippo</section> -->
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="projects" aria-labelledby="projects">
+          <h2 id="projects">Highlighted Projects</h2>
+
+          <article class="card">
+            <h3><a href="https://github.com/claudcelle/abm-finance">Reddit User Gender Classification</a></h3>
+            <p class="muted">Developed a machine learning model to predict Reddit users’ gender from their posts. Built text-based features and trained a custom classification pipeline. Applied statistical modeling and modern ML techniques for performance optimization. Created as part of a course competition in Data Mining: Statistical Modeling & Learning From Data.</p>
+            <!-- <pre><code>pip install -e .  # quickstart -->
+<!-- python -m abm.sim --steps 1_000_000</code></pre> -->
+          </article>
+
+          <article class="card">
+            <h3><a href="https://github.com/claudcelle/diffusion-xai">Diffusion-XAI</a></h3>
+            <p class="muted">Diffusion models with interpretable knobs and fast sampling.</p>
+          </article>
+
+          <article class="card">
+            <h3><a href="https://claudcelle.github.io/blog">Blog</a></h3>
+            <p class="muted">Short notes on modeling, reproducibility, and speed.</p>
+          </article>
+        </section>
+
+        <!-- CONTACT -->
+        <section aria-labelledby="contact">
+          <h2 id="contact">Contact</h2>
+          <p>
+            Reach me at <a class="chip" href="mailto:claudio.cellerini.2@gmail.com" aria-label="Email">✉️ Email</a>
+            <!-- <a href="mailto:you@example.com">you@example.com</a> -->
+            . I read everything.
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>© <span id="year"></span> Claudio Cellerini</span>
+        <span>Built with HTML/CSS/JS</span>
+      </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+      // Year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Theme toggle with localStorage + respects system preference
+      const root = document.documentElement;
+      const btn = document.getElementById('theme');
+      const saved = localStorage.getItem('theme');
+      
+      // Apply saved theme on load
+      if(saved){ 
+        root.setAttribute('data-theme', saved); 
+      }
+      
+      // Theme toggle functionality
+      btn.addEventListener('click', () => {
+        const current = root.getAttribute('data-theme');
+        const next = current === 'light' ? '' : 'light';
+        
+        if(next){ 
+          root.setAttribute('data-theme', next); 
+          localStorage.setItem('theme', next); 
+        } else { 
+          root.removeAttribute('data-theme'); 
+          localStorage.removeItem('theme'); 
+        }
+        
+        // Update particles
+        updateParticles();
+      });
+
+      // Particles configuration
+      function getParticlesConfig() {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        return {
+          particles: {
+            number: { value: 80 },
+            color: { value: isLight ? "#0ea5e9" : "#00ffcc" },
+            shape: { type: "circle" },
+            opacity: { value: isLight ? 0.15 : 0.25 },
+            size: { value: 3 },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: isLight ? "#0ea5e9" : "#00ffcc",
+              opacity: isLight ? 0.1 : 0.2,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 1.5
+            }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: { enable: true, mode: "repulse" },
+              onclick: { enable: true, mode: "push" }
+            },
+            modes: {
+              repulse: { distance: 100 },
+              push: { particles_nb: 4 }
+            }
+          }
+        };
+      }
+
+      // Initialize particles
+      function initParticles() {
+        particlesJS("particles-js", getParticlesConfig());
+      }
+
+      // Update particles when theme changes
+      function updateParticles() {
+        // Clear existing particles
+        if (window.pJSDom && window.pJSDom.length > 0) {
+          window.pJSDom[0].pJS.fn.vendors.destroypJS();
+          window.pJSDom = [];
+        }
+        
+        // Reinitialize with new config
+        setTimeout(initParticles, 100);
+      }
+
+      // Initialize particles on page load
+      initParticles();
+    </script>
+  </body>
+</html>
